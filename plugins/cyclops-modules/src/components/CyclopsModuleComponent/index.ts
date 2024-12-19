@@ -1,0 +1,1 @@
+export { CyclopsModuleComponent } from './CyclopsModuleComponent';
