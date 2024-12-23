@@ -2,9 +2,13 @@
 
 Shows Cyclops module data as part of the Backstage catalog. This plugin allows you to add the page for Module details and edit your Modules through a new tab in your Component details page.
 
+<img width="1496" alt="Screenshot 2024-12-23 at 13 59 50" src="https://github.com/user-attachments/assets/c4174393-1a2b-451e-ab6b-f39b52dbd1cb" />
+
 You can view Kubernetes resources deployed for a Module (check status, list logs) as well as perform actions like reconciling Modules or restarting workloads.
 
 If you click the `Edit` button, you will be able to see the UI for editing that specific Module.
+
+<img width="1494" alt="Screenshot 2024-12-23 at 14 01 51" src="https://github.com/user-attachments/assets/76b554fd-ec88-4484-b2b9-d6ce25f6a2d2" />
 
 Module plugin communicates with an existing Cyclops backend instance running in your cluster. All requests going from your Backstage app to the Cyclops backend are proxied through the Backstage backend, so all of the requests are authenticated.
 
