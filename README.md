@@ -1,7 +1,5 @@
 # Cyclops Backstage plugins
 
----
-
 This repository holds Cyclops backstage plugins. These plugins serve for an easier integration with Backstage for a more full developer platform experience.
 
 Official Cyclops Backstage plugins stored in this repository are:
@@ -10,13 +8,17 @@ Official Cyclops Backstage plugins stored in this repository are:
 
 All the plugins and how to configure them are documented in more detail below.
 
-## Module plugin
+## Module plugin (`plugins/cyclops-modules`)
 
 Shows Cyclops module data as part of the Backstage catalog. This plugin allows you to add the page for Module details and edit your Modules through a new tab in your Component details page.
+
+<img width="1496" alt="Screenshot 2024-12-23 at 13 59 50" src="https://github.com/user-attachments/assets/0a2eb735-fad2-4e60-a59a-4824ec16f219" />
 
 You can view Kubernetes resources deployed for a Module (check status, list logs) as well as perform actions like reconciling Modules or restarting workloads.
 
 If you click the `Edit` button, you will be able to see the UI for editing that specific Module.
+
+<img width="1494" alt="Screenshot 2024-12-23 at 14 01 51" src="https://github.com/user-attachments/assets/b6954b94-5520-4d1b-a793-c8c74227a8bc" />
 
 Module plugin communicates with an existing Cyclops backend instance running in your cluster. All requests going from your Backstage app to the Cyclops backend are proxied through the Backstage backend, so all of the requests are authenticated.
 
