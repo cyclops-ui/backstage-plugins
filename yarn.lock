@@ -6963,7 +6963,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cyclopsui/backstage-plugin-cyclops-modules@npm:^0.1.0, @cyclopsui/backstage-plugin-cyclops-modules@workspace:plugins/cyclops-modules":
+"@cyclopsui/backstage-plugin-cyclops-modules@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@cyclopsui/backstage-plugin-cyclops-modules@npm:0.1.0"
+  dependencies:
+    "@backstage/core-components": "npm:^0.16.2"
+    "@backstage/core-plugin-api": "npm:^1.10.2"
+    "@backstage/theme": "npm:^0.6.3"
+    "@cyclopsui/cyclops-ui": "npm:^0.1.18"
+    "@material-ui/core": "npm:^4.9.13"
+    "@material-ui/icons": "npm:^4.9.1"
+    "@material-ui/lab": "npm:^4.0.0-alpha.61"
+    react-use: "npm:^17.2.4"
+  peerDependencies:
+    react: ^16.13.1 || ^17.0.0 || ^18.0.0
+  checksum: 10c0/1546d72d383e24e3b6c77b2849f0cdc3f5d925cbf7dd91e5ba3b92ed6a428d090770440017cf8b3fa00638be7a938461d90011daf68daa29b9bed598aac3004a
+  languageName: node
+  linkType: hard
+
+"@cyclopsui/backstage-plugin-cyclops-modules@workspace:plugins/cyclops-modules":
   version: 0.0.0-use.local
   resolution: "@cyclopsui/backstage-plugin-cyclops-modules@workspace:plugins/cyclops-modules"
   dependencies:
