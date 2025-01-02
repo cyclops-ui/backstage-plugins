@@ -31,3 +31,4 @@ jobs:
       - name: Print
         run: |
           git status
+          git diff
