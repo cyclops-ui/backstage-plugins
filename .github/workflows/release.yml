@@ -44,6 +44,8 @@ jobs:
         id: extract_branch
       - name: Commit new version
         run: |
+          TAG=${{ github.event.inputs.version }}
+
           git fetch origin ${{ steps.extract_branch.outputs.branch }}
           git checkout ${{ steps.extract_branch.outputs.branch }}
           git config user.name 'github-actions[bot]'
