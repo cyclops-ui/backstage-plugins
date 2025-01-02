@@ -27,7 +27,7 @@ jobs:
       - name: Update version
         working-directory: plugins/cyclops-modules
         run: |
-          jq '.version = "0.2.3-rc.2"' package.json > tmp.json && mv tmp.json package.json
+          jq '.version = "${{ github.event.inputs.version }}"' package.json > tmp.json && mv tmp.json package.json
       - name: Build types
         run: |
           yarn tsc
@@ -38,13 +38,17 @@ jobs:
         run: |
           yarn build
           npm publish --access public
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
       - name: Commit new version
         run: |
-          git fetch origin publish-plugin-action
-          git checkout publish-plugin-action
+          git fetch origin ${{ steps.extract_branch.outputs.branch }}
+          git checkout ${{ steps.extract_branch.outputs.branch }}
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git status
           git add plugins/cyclops-modules/package.json
-          git commit -m '⚙️ update cyclops modules plugin version'
-          git push origin HEAD:publish-plugin-action
+          git commit -m '⚙️ update modules plugin to '$TAG
+          git push origin HEAD:${{ steps.extract_branch.outputs.branch }}
