@@ -1,0 +1,54 @@
+name: publish-modules-plugin
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true
+        description: Version to be used as release name and image tagging
+
+permissions:
+  contents: write
+
+jobs:
+  publish-module-plugin-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          registry-url: 'https://registry.npmjs.org/'
+          cache: 'npm'
+      - name: Install dependencies
+        run: |
+          yarn install
+      - name: Update version
+        working-directory: plugins/cyclops-modules
+        run: |
+          jq '.version = "${{ github.event.inputs.version }}"' package.json > tmp.json && mv tmp.json package.json
+      - name: Build types
+        run: |
+          yarn tsc
+      - name: Build and publish modules plugin
+        working-directory: plugins/cyclops-modules
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_MODULES_PLUGIN_TOKEN }}
+        run: |
+          yarn build
+          npm publish --access public
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+      - name: Commit new version
+        run: |
+          git fetch origin ${{ steps.extract_branch.outputs.branch }}
+          git checkout ${{ steps.extract_branch.outputs.branch }}
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git status
+          git add plugins/cyclops-modules/package.json
+          git commit -m '⚙️ update modules plugin to '$TAG
+          git push origin HEAD:${{ steps.extract_branch.outputs.branch }}
