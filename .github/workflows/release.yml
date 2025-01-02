@@ -40,13 +40,6 @@ jobs:
           npm publish --access public
       - name: Commit new version
         run: |
-          TAG=${{ github.event.inputs.version }}
-          INSTALL_YAML=$GITHUB_WORKSPACE/install/cyclops-install.yaml
-
-          sed -i 's/cyclopsui\/cyclops-ctrl\:.*/cyclopsui\/cyclops-ctrl\:'$TAG'/' $INSTALL_YAML
-          sed -i 's/cyclopsui\/cyclops-ui\:.*/cyclopsui\/cyclops-ui\:'$TAG'/' $INSTALL_YAML
-
-          # update file
           git fetch origin publish-plugin-action
           git checkout publish-plugin-action
           git config user.name 'github-actions[bot]'
