@@ -37,7 +37,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_MODULES_PLUGIN_TOKEN }}
         run: |
           yarn build
-          yarn publish --access public
+          npm publish --access public
       - name: Commit new version
         run: |
           TAG=${{ github.event.inputs.version }}
