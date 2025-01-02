@@ -1,6 +1,9 @@
 name: publish-modules-plugin
 
 on:
+  pull_request:
+    branches:
+      - publish-plugin-action
   workflow_dispatch:
     inputs:
       version:
