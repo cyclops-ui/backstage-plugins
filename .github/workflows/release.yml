@@ -27,7 +27,7 @@ jobs:
       - name: Update version
         working-directory: plugins/cyclops-modules
         run: |
-          jq '.version = "0.2.3-rc.1"' package.json > tmp.json && mv tmp.json package.json
+          jq '.version = "0.2.3-rc.2"' package.json > tmp.json && mv tmp.json package.json
       - name: Build types
         run: |
           yarn tsc

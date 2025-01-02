@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "github:cyclops-ui/backstage-plugins",
+    "url": "git+https://github.com/cyclops-ui/backstage-plugins.git",
     "directory": "plugins/cyclops-modules"
   },
   "backstage": {
