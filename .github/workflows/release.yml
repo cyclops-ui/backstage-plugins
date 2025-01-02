@@ -1,0 +1,30 @@
+name: publish-modules-plugin
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true
+        description: Version to be used as release name and image tagging
+
+permissions:
+  contents: write
+
+jobs:
+  publish-module-plugin-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+      - name: Install dependencies
+        run: |
+          yarn install
+      - name: Update version
+        working-directory: plugins/cyclops-modules
+        run: |
+          jq '.version = "${{ github.event.inputs.version }}"' package.json > tmp.json && mv tmp.json package.json
+      - name: Print
+        run: |
+          git status
