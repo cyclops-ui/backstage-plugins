@@ -1,6 +1,9 @@
 name: publish-modules-plugin
 
 on:
+  push:
+    # only trigger on branches, not on tags
+    branches: '**'
   workflow_dispatch:
     inputs:
       version:
