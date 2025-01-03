@@ -8,6 +8,7 @@ import { useApi, configApiRef } from '@backstage/core-plugin-api';
 import {useTheme} from "@material-ui/core"
 
 import {moduleApiRef} from "../../api";
+import {mapModuleName} from "../../mapper/modules";
 
 export const CyclopsModuleComponent = () => {
     const [showModuleDetails, setShowModuleDetails] = useState(true)
@@ -17,12 +18,14 @@ export const CyclopsModuleComponent = () => {
     const config = useApi(configApiRef);
     const theme = useTheme();
 
+    const moduleName = mapModuleName(entity.entity)
+
     return (
         <Content noPadding>
             <div>
                 {showModuleDetails ? (
                     <ModuleResourceDetails
-                        name={entity.entity.metadata.name}
+                        name={moduleName}
                         themePalette={theme.palette.type}
                         streamingDisabled={config.getOptionalBoolean("cyclops.streamingDisabled") || false}
                         fetchModule={(...args) => {
@@ -110,6 +113,5 @@ export const CyclopsModuleComponent = () => {
                 }
             </div>
         </Content>
-        // </Page>
     )
 };
