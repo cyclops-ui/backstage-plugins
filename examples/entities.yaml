@@ -19,6 +19,19 @@ spec:
   system: examples
   providesApis: [example-grpc-api]
 ---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: name-override-example
+  annotations:
+    cyclops-ui.com/module-name-override: demo-module
+spec:
+  type: website
+  lifecycle: experimental
+  owner: guests
+  system: examples
+  providesApis: [example-grpc-api]
+---
 # https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api
 apiVersion: backstage.io/v1alpha1
 kind: API
