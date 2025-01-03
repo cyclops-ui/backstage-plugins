@@ -1,6 +1,6 @@
 {
   "name": "@cyclopsui/backstage-plugin-cyclops-modules",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "license": "Apache-2.0",
