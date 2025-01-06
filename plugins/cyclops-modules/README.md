@@ -12,8 +12,26 @@ If you click the `Edit` button, you will be able to see the UI for editing that 
 
 Module plugin communicates with an existing Cyclops backend instance running in your cluster. All requests going from your Backstage app to the Cyclops backend are proxied through the Backstage backend, so all of the requests are authenticated.
 
-The Module plugin will fetch the Module called the same as the component. In this case, the component is called `example-website`, and the Cyclops plugin will fetch a Module called `example-website`. With future improvements, we plan to enable mapping between Component names and Cyclops Modules via annotations so that the names of the components and Modules don't have to be the same, allowing for more flexibility.
+By default, the Module plugin will fetch the Module called the same as the component. In this case, the component is called `example-website`, and the Cyclops plugin will fetch a Module called `example-website`.
 
+In case your Module is called differently from the Backstage component, you can set the `cyclops-ui.com/module-name-override` annotation that would override the Module fetched for your component. In the example below, the component is called `my-component`, but the Module that would be fetched is the `demo-module`.
+
+```yaml
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-component
+  annotations:
+    cyclops-ui.com/module-name-override: demo-module # specify which Cyclops module should be fetched
+spec:
+  type: website
+  lifecycle: experimental
+  owner: guests
+  system: examples
+  providesApis: [example-grpc-api]
+```
+
+### Install
 Steps for setting up the plugin on your Backstage app:
 
 1. Have a running Cyclops instance:
