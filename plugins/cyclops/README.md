@@ -2,9 +2,13 @@
 
 Lists all Cyclops modules on `/cyclops` so all of the modules can be viewed in a single page. Each module can then be selected and managed separately.
 
+<img width="1512" alt="Screenshot 2025-01-20 at 20 09 23" src="https://github.com/user-attachments/assets/2df56370-5af7-44d9-8f08-de3a509503fb" />
+
 You can create a new Module by clicking the `Add module` button in the top right corner, which will allow you to select a template and enter the configuration through the UI. Once a module is created, you can check its resources and see it on the list above.
 
 Each module can be selected by clicking on its name to list Kubernetes resources deployed for a particular module or to further edit the module.
+
+<img width="1512" alt="Screenshot 2025-01-20 at 20 11 56" src="https://github.com/user-attachments/assets/a6ae8cad-1075-42d3-b725-bc9d9dd046fb" />
 
 Through this page, you can view or edit your Kubernetes resources and the module.
 
