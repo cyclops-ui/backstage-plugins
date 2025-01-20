@@ -75,19 +75,6 @@ export const CyclopsModuleComponent = () => {
                     />
                 ) : (
                     <div>
-                        <button onClick={() => setShowModuleDetails(true)}
-                            style={{
-                                padding: "10px 20px",
-                                backgroundColor: "#ff8803",
-                                color: "white",
-                                border: "none",
-                                borderRadius: "5px",
-                                cursor: "pointer",
-                                fontWeight: "bold"
-                            }}
-                        >
-                            Go Back
-                        </button>
                         <EditModuleComponent
                             moduleName={entity.entity.metadata.name}
                             themePalette={theme.palette.type}
@@ -106,6 +93,9 @@ export const CyclopsModuleComponent = () => {
                             }}
                             getTemplateInitialValues={() => {
                                 return Promise.resolve()
+                            }}
+                            onBackButton={() => {
+                                setShowModuleDetails(true)
                             }}
                         />
                     </div>
