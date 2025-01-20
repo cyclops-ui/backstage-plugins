@@ -1,0 +1,1 @@
+export { ModuleComponent } from './ModuleComponent';
