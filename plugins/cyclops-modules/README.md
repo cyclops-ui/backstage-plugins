@@ -71,3 +71,9 @@ Steps for setting up the plugin on your Backstage app:
 Your Backstage catalog can now view and edit deployed Modules in your cluster.
 
 This plugin can't deploy new Modules and can only give you an overview of existing ones.
+
+The backstage plugin subscribes to the SSE on the Cyclops API to have live data about deployed Kubernetes resources. If you want to turn off streaming and fallback to polling, you can add the following to the `app-config.yaml`:
+```yaml
+cyclops:
+  streamingDisabled: true
+```

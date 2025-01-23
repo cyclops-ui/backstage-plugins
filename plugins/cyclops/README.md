@@ -64,3 +64,9 @@ Steps for setting up the plugin on your Backstage app:
     ```
 
 You should now be able to see the sidebar button leading you to the list of modules, as shown in the image above.
+
+The backstage plugin subscribes to the SSE on the Cyclops API to have live data about deployed Kubernetes resources. If you want to turn off streaming and fallback to polling, you can add the following to the `app-config.yaml`:
+```yaml
+cyclops:
+  streamingDisabled: true
+```
