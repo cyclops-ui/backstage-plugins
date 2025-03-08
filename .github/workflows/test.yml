@@ -1,4 +1,4 @@
-name: Unit Tgests
+name: Unit Tests
 
 on:
   pull_request:
